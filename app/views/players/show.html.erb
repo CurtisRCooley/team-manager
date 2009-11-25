@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @player.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @player.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', :controller => 'admin' %>

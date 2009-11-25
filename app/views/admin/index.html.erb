@@ -1,0 +1,14 @@
+<h1>Hello Captain</h1>
+<div id='team'>
+  <h3>Users</h3>
+  <table>
+  <% @users.each { |user|  %>
+    <tr>
+      <td><%= user.email %></td>
+    </tr>
+  <% } %>
+  </table>
+</div>
+<div id='menu'>
+  <%= link_to "Home", :home %>
+</div>

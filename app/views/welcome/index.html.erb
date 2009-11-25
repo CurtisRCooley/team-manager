@@ -1,0 +1,21 @@
+<div id="head">
+<h1>Welcome To Rec Team Captain</h1>
+</div>
+<div id="body">
+<p>The one stop place to manage your recreational schedule and team.</p>
+<dl>
+  <dt>What does it do?</dt>
+  <dd>Rec Team Manager can email your team before games so you don't have to</dd>
+</dl>
+</div>
+<div id='menu'>
+  <ul>
+    <% if session[:user_id] %>
+      <li><%= link_to 'My Players', :controller => 'players' %></li>
+      <li><%= link_to 'My Schedule', :controller => 'games' %></li>
+    <% end %>
+  </ul>
+</div>
+<div id='footer'>
+  <hr>
+</div>
