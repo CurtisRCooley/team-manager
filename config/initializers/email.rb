@@ -8,5 +8,6 @@ if RAILS_ENV != 'test'
     :password => "Perturbed",
     :authentication => :login,
     :port => 25,
+    :domain => "thecooleys.org"
   }
 end
