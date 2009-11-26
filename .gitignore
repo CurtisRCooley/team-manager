@@ -1,4 +1,5 @@
 .bzr
+.bzrignore
 log
 *.sqlite3
 
