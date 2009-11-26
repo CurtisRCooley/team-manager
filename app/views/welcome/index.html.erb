@@ -1,23 +1,26 @@
 <div id="head">
 <h1>Welcome To Rec Team Captain</h1>
 </div>
+<div id='menu'>
+  <ul>
+    <% if session[:user_id] %>
+      <li><%= link_to 'Players', :controller => 'players' %></li>
+      <li><%= link_to 'Games', :controller => 'games' %></li>
+      <li><%= link_to 'Logout', :controller => 'admin', :action => 'logout' %></li>
+    <% else %>
+      <li><%= link_to 'Login', :controller => 'admin', :action => 'login' %>
+      <li><%= link_to 'Register', :controller => 'admin', :action => 'register' %>
+    <% end %>
+  </ul>
+</div>
 <div id="body">
 <p>The one stop place to manage your recreational schedule and team.</p>
 <dl>
   <dt>What does it do?</dt>
   <dd>Rec Team Manager can email your team before games so you don't have to</dd>
-  <dt>How does it help</dt>
-  <dd>Rec Team Captain automatically emails your team 4 days before each game</dd>
 </dl>
-</div>
-<div id='menu'>
-  <ul>
-    <% if session[:user_id] %>
-      <li><%= link_to 'My Players', :controller => 'players' %></li>
-      <li><%= link_to 'My Schedule', :controller => 'games' %></li>
-    <% end %>
-  </ul>
+To get started once you've registered, use the players link to manage your team and the games link to manage your games. Emails will be sent out 4 days prior to each game to each player.
 </div>
 <div id='footer'>
-  <hr>
+  Rec Team Manager &trade; LMCR Enterprises
 </div>
