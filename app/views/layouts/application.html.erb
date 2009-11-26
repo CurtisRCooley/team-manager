@@ -9,7 +9,7 @@
 </head>
 <body>
   <div id='header'>
-    <h1>Rec Team Captain</h1>
+    <span class='login-links'>
     <% if session[:user_id] %>
       logged in as <%= User.find_by_id(session[:user_id]).email %>
       | <%= link_to "Logout", :logout, :class => 'header' %>
@@ -17,8 +17,10 @@
       <%= link_to "Login", :login, :class => 'header' %> |
       <%= link_to "Register", :register, :class => 'header' %>
     <% end %>
+    </span>
+    <h1>Rec Team Captain</h1>
   </div>
-<p style="color: green"><%= flash[:notice] %></p>
+<p style="color: darkgreen"><%= flash[:notice] %></p>
 
 <%= yield %>
 

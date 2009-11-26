@@ -4,19 +4,25 @@ body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
-  background-color: palegreen;
+  background-color: linen;
+  color: DarkGreen;
 }
 
 #header {
-  background-color: green;
-  color: black;
+  background-color: darkgreen;
+  color: linen;
   border: 2px solid black;
   padding: 1em;
 }
 
+.login-links {
+  text-align: right;
+  font-size: smaller;
+}  
+
 a.header { color: palegreen; }
-a.header:visited { color: palegreen; }
-a.header:hover {color: green; background-color: palegreen}
+a.header:visited { color: palegreen; text-align: right;}
+a.header:hover {color: darkgreen; background-color: palegreen}
 
 table, tr, td, th {
   border-collapse: collapse;
@@ -29,8 +35,14 @@ pre {
   font-size: 11px;
 }
 
-a { color: #000; }
-a:visited { color: #666; }
+a { 
+  color: #000;
+  text-decoration: none;
+}
+a:visited { 
+  color: #666; 
+  text-decoration: none;
+}
 a:hover { color: #fff; background-color:#000; }
 
 .fieldWithErrors {
@@ -73,17 +85,20 @@ a:hover { color: #fff; background-color:#000; }
   float: left;
   width: 100px;
   margin-top: 0;
-  margin-right: 1.67em;
-  border-right: 1px solid black;
   padding-top: 0;
-  padding-right: 1em;
   padding-bottom: 20px;
+}
+
+#menu li {
+  list-style-type: none;
 }
 
 #body {
   margin-top: 0;
   padding-top: 0;
   margin-left: 140px;
+  border-left: 1px solid black;
+  padding-left: 1em;
 }
 
 #footer {
