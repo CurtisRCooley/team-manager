@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   before_filter :check_authentication,
                 :check_authorization,
-                :except => [ :register, :login, :logout, :validate ]
+                :except => [ :register, :login, :logout, :validate, :reminder ]
 
   def check_authentication
     unless session[:user_id]
