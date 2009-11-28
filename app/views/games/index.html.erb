@@ -10,7 +10,7 @@
 
 <% @games.each do |game| %>
   <tr>
-    <td><%=h game.game_time %></td>
+    <td><%=h game.game_time.strftime("%a %b %d %I:%M %p") %></td>
     <td><%=h game.location %></td>
     <td><%=h game.opponent %></td>
     <td><%=h game.note %></td>

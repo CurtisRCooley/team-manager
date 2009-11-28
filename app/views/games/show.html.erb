@@ -1,6 +1,6 @@
 <p>
   <b>Game time:</b>
-  <%=h @game.game_time %>
+  <%=h @game.game_time.strftime("%a %b %d %I:%M %p") %>
 </p>
 
 <p>
