@@ -10,8 +10,8 @@
     Opponent: <%= @game.opponent %><br>
     <%= @game.note %>
     <br>
-    <%= playing_url("Playing", {:player_id => @player.id, :game_id => @game.id, :host => 'team-manager.heroku.com'}) %>
+    <%= link_to "Playing", playing_url(:player_id => @player.id, :game_id => @game.id, :host => 'team-manager.heroku.com') %>
     <br>
-    <%= not_playing_url("Not Playing", {:player_id => @player, :game_id => @game.id, :host => 'team-manager.heroku.com'}) %>
+    <%= link_to "Not Playing", not_playing_url(:player_id => @player, :game_id => @game.id, :host => 'team-manager.heroku.com') %>
   </body> 
 </html>
