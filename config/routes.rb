@@ -4,11 +4,13 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/admin/logout', :controller => 'admin', :action => 'logout'
   map.register '/admin/register', :controller => 'admin', :action => 'register'
   map.validate_registration 'admin/validate/:registration_key/:id', :controller => 'admin', :action => 'validate'
-  map.edit_player 'player/edit/:id', :controller => 'players', :action => 'edit'
+  map.playing_status '/games/playing_status/:id', :controller => 'games', :action => 'playing_status'
+  map.not_playing 'players/not_playing/:player_id/:game_id', :controller => 'players', :action => 'not_playing'
+  map.playing 'players/playing/:player_id/:game_id', :controller => 'players', :action => 'playing'
+  map.edit_player 'players/edit/:id', :controller => 'players', :action => 'edit'
   map.resources :users
 
 #  map.resources :players
-
   map.resources :games
 
   # The priority is based upon order of creation: first created -> highest priority.
