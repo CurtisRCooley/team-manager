@@ -83,7 +83,7 @@ a:hover { color: #fff; background-color:#000; }
 
 #menu {
   float: left;
-  width: 100px;
+  width: 75px;
   margin-top: 0;
   padding-top: 0;
   padding-bottom: 20px;
@@ -94,9 +94,10 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 #body {
+  padding-right: 50px;
   margin-top: 0;
   padding-top: 0;
-  margin-left: 140px;
+  margin-left: 100px;
   border-left: 1px solid black;
   padding-left: 1em;
 }
