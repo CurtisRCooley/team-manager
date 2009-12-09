@@ -7,11 +7,11 @@ class UserMailer < ActionMailer::Base
     body :user => user, :url => "http://team-manager.heroku.com/admin/validate/#{user.registration_key}/#{user.id}"
   end 
 
-  def reminder_email(players, game, user)
-    recipients players.collect { |player| player.email }
+  def reminder_email(player, game, user)
+    recipients player.email
     from user.email
     subject "Game Reminder"
     sent_on Time.now 
-    body :game => game
+    body :game => game, :player => player
   end
 end

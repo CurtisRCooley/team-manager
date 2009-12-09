@@ -49,4 +49,9 @@ class GamesControllerTest < ActionController::TestCase
 
     assert_redirected_to games_path
   end
+
+  test "should show playing status for game" do
+    get :playing_status, {:id => games(:user_two_game).to_param}, {:user_id => users(:two)}
+    assert_equal 1, assigns(:playing).length
+  end
 end

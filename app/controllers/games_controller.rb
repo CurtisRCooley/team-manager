@@ -84,4 +84,23 @@ class GamesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def playing_status
+    @game = Game.find_by_id(params[:id])
+    @playing = []
+    @not_playing = []
+    @undecided = []
+    Player.find_all_by_user_id(session[:user_id]).each do |player|
+      playing_status = PlayingStatus.find_by_game_id_and_player_id(@game.id, player.id)
+      if playing_status
+        if playing_status.playing_status == 0
+          @not_playing << player
+        else
+          @playing << player
+        end
+      else
+        @undecided << player
+      end
+    end
+  end
 end

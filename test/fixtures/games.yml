@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20091112014219
+# Schema version: 20091129194440
 #
 # Table name: games
 #
@@ -30,7 +30,7 @@ game2:
   user: one
 
 user_two_game:
-  game_time: 2009-10-30 12:15:08
+  game_time: <%= Date.today %>
   location: MyString
   opponent: MyString
   note: MyText

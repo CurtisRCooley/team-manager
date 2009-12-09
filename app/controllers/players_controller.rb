@@ -44,17 +44,42 @@ class PlayersController < ApplicationController
     end
   end
 
+  def playing
+    mark_playing_status(PlayingStatus::PLAYING)
+  end
+
+  def not_playing
+    mark_playing_status(PlayingStatus::NOT_PLAYING)
+  end
+
   def reminder
     User.all.each { |user|
       upcoming_games(user).each { |game|
-        UserMailer.deliver_reminder_email(Player.find_all_by_user_id(user.id), game, user)
+	Player.find_all_by_user_id(user.id).each { |player|
+	  UserMailer.deliver_reminder_email(player, game, user)
+	}
       }
     }
-      
   end
 
   private
     def upcoming_games(user)
-      user.games.select { |game| game.game_time <= 4.days.from_now  && game.game_time > 3.days.from_now }
+      Game.find(:all,
+        :conditions => ["user_id = ? AND game_time <= ? AND game_time > ?",
+	  user.id, 4.days.from_now, 3.days.from_now])
+    end
+
+    def mark_playing_status(status)
+      logger.info("Playing status: #{status}")
+      playing_status = PlayingStatus.find(:first,
+                                          :conditions => ["player_id = ? and game_id = ?", params[:player_id], params[:game_id]]) || PlayingStatus.create
+      playing_status.playing_status = status
+      playing_status.save
+      @player = Player.find_by_id(params[:player_id])
+      @game = Game.find_by_id(params[:game_id])
+      @game.playing_statuses << playing_status
+      @player.playing_statuses << playing_status
+      @game.save
+      @player.save
     end
 end

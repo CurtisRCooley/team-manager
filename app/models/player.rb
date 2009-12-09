@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20091112014219
+# Schema version: 20091129194440
 #
 # Table name: players
 #
@@ -13,4 +13,6 @@
 
 class Player < ActiveRecord::Base
   belongs_to :user
+  has_many :playing_statuses
+  has_many :games, :through => :playing_statuses
 end

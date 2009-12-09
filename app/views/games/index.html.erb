@@ -14,6 +14,7 @@
     <td><%=h game.location %></td>
     <td><%=h game.opponent %></td>
     <td><%=h game.note %></td>
+    <td><%= link_to 'Playing Status', playing_status_path(game) %></td>
     <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>

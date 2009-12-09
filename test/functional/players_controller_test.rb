@@ -50,9 +50,25 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should email players" do
     get :reminder
-    assert_equal 1, ActionMailer::Base.deliveries.length
-    assert_equal %w[player@one.com player@two.com], ActionMailer::Base.deliveries[0].to
+    assert_equal 2, ActionMailer::Base.deliveries.length
+    assert_equal %w[player@one.com], ActionMailer::Base.deliveries[0].to
     assert_equal "Game Reminder", ActionMailer::Base.deliveries[0].subject
     assert_equal users(:two).email, ActionMailer::Base.deliveries[0].from[0]
+  end
+
+  test "should mark player as playing" do
+    player = players(:player_one)
+    game = games(:game1)
+    get :playing, :player_id => player.to_param, :game_id => game.to_param
+    assert_equal PlayingStatus::PLAYING, player.playing_statuses[0].playing_status 
+    assert_equal player.playing_statuses[0], game.playing_statuses[0]
+  end
+
+  test "should mark player as not playing" do
+    player = players(:player_one)
+    game = games(:game1)
+    get :not_playing, :player_id => player.to_param, :game_id => game.to_param
+    assert_equal PlayingStatus::NOT_PLAYING, player.playing_statuses[0].playing_status 
+    assert_equal player.playing_statuses[0], game.playing_statuses[0]
   end
 end
