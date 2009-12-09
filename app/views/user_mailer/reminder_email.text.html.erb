@@ -10,6 +10,7 @@
     Opponent: <%= @game.opponent %><br>
     <%= @game.note %>
     <br>
+    <p>Please indicate if you are playing or not playing by clicking on the appropriate link below.</p>
     <%= link_to "Playing", playing_url(:player_id => @player.id, :game_id => @game.id, :host => 'team-manager.heroku.com') %>
     <br>
     <%= link_to "Not Playing", not_playing_url(:player_id => @player, :game_id => @game.id, :host => 'team-manager.heroku.com') %>
