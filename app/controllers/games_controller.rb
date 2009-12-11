@@ -93,7 +93,7 @@ class GamesController < ApplicationController
     Player.find_all_by_user_id(session[:user_id]).each do |player|
       playing_status = PlayingStatus.find_by_game_id_and_player_id(@game.id, player.id)
       if playing_status
-        if playing_status.playing_status == 0
+        if playing_status.playing_status == PlayingStatus::PLAYING
           @not_playing << player
         else
           @playing << player
