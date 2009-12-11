@@ -13,4 +13,4 @@
 
 admin:
   name: Manage Users
-  rights: admin
+  rights: admin,user

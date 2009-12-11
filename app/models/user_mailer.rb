@@ -14,4 +14,11 @@ class UserMailer < ActionMailer::Base
     sent_on Time.now 
     body :game => game, :player => player
   end
+
+  def player_email(user, the_subject, message)
+    recipients user.players.collect{ |player| player.email }
+    from user.email
+    subject the_subject
+    body message
+  end
 end

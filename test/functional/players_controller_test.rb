@@ -3,6 +3,7 @@ require 'test_helper'
 class PlayersControllerTest < ActionController::TestCase
   def setup
     session[:user_id] = users(:one).id
+    ActionMailer::Base.deliveries.clear
   end
 
   test "should get index" do
@@ -48,12 +49,22 @@ class PlayersControllerTest < ActionController::TestCase
     assert_redirected_to :action => 'index'
   end
 
-  test "should email players" do
+  test "should remind players" do
     get :reminder
-    assert_equal 2, ActionMailer::Base.deliveries.length
+    assert_emails 2
     assert_equal %w[player@one.com], ActionMailer::Base.deliveries[0].to
     assert_equal "Game Reminder", ActionMailer::Base.deliveries[0].subject
     assert_equal users(:two).email, ActionMailer::Base.deliveries[0].from[0]
+  end
+
+  test "should email players" do
+    post :email, {:subject => "subject", :message => "the message"}, {:user_id => users(:two).id }
+    assert_emails 1
+    assert_equal 1, ActionMailer::Base.deliveries.length
+    assert_equal %w[player@one.com player@two.com], ActionMailer::Base.deliveries[0].to
+    assert_equal "subject", ActionMailer::Base.deliveries[0].subject
+    assert_equal users(:two).email, ActionMailer::Base.deliveries[0].from[0]
+    assert_equal "Message sent", flash[:notice]
   end
 
   test "should mark player as playing" do

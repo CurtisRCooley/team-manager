@@ -62,6 +62,14 @@ class PlayersController < ApplicationController
     }
   end
 
+  def email
+    if request.post?
+      user = User.find_by_id(session[:user_id])
+        UserMailer.deliver_player_email(user, params[:subject], params[:message])
+      flash[:notice] = "Message sent"
+    end
+  end
+
   private
     def upcoming_games(user)
       Game.find(:all,

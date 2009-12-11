@@ -49,4 +49,7 @@ class AdminController < ApplicationController
     end
   end
 
+  def users_report
+    @users = User.all
+  end
 end
