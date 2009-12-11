@@ -1,0 +1,27 @@
+<% @users.each do |user| %>
+  <h3><%= user.email %></h3>
+  <table style='border:none'>
+    <tr>
+      <td>
+	  Players
+	  <table>
+	  <tr><th>Name</th><th>Email</th></tr>
+	  <% user.players.each do |player| %>
+	    <tr><td><%= player.name %></td><td><%= player.email %></td</tr>
+	  <% end %>
+	  </table>
+      </td>
+      <td>
+	Games
+	<table>
+	  <tr><th>Time</th><th>Opponent</th><th>Location</th></tr>
+	  <% user.games.each do |game| %>
+            <tr>
+	      <td><%= game.game_time %></td>
+              <td><%= game.opponent %></td>
+	      <td><%= game.location %></td>
+	    </tr>
+	  <% end %>
+	</table>
+  </table>
+<% end %>
