@@ -5,6 +5,7 @@
     <% if session[:user_id] %>
       <li><%= link_to 'Players', :controller => 'players' %></li>
       <li><%= link_to 'Games', :controller => 'games' %></li>
+      <li><%= link_to 'Message Players', :controller => 'players', :action => 'email' %>
       <li><%= link_to 'Logout', :controller => 'admin', :action => 'logout' %></li>
     <% else %>
       <li><%= link_to 'Login', :controller => 'admin', :action => 'login' %>
