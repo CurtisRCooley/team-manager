@@ -1,5 +1,11 @@
 <h1>Hello Captain</h1>
-<div id='team'>
+<div id='menu'>
+  <ul>
+    <li><%= link_to "Home", :home %></li>
+    <li><%= link_to "Email Users", :action => 'email' %></li>
+  </ul>
+</div>
+<div id='body'>
   <h3>Users</h3>
   <table>
   <% @users.each { |user|  %>
@@ -8,7 +14,4 @@
     </tr>
   <% } %>
   </table>
-</div>
-<div id='menu'>
-  <%= link_to "Home", :home %>
 </div>

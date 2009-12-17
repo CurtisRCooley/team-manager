@@ -15,9 +15,9 @@ class UserMailer < ActionMailer::Base
     body :game => game, :player => player
   end
 
-  def player_email(user, the_subject, message)
-    recipients user.players.collect{ |player| player.email }
-    from user.email
+  def bulk_emails(emails, from, the_subject, message)
+    recipients emails
+    from from
     subject the_subject
     body message
   end

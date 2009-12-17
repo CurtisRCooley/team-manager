@@ -65,7 +65,8 @@ class PlayersController < ApplicationController
   def email
     if request.post?
       user = User.find_by_id(session[:user_id])
-        UserMailer.deliver_player_email(user, params[:subject], params[:message])
+      emails = user.players.collect { |player| player.email }
+      UserMailer.deliver_bulk_emails(emails, user.email, params[:subject], params[:message])
       flash[:notice] = "Message sent"
       redirect_to home_url
     end
