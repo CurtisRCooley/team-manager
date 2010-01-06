@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  skip_before_filter [ :check_authorization, :playing, :not_playing ]
+  skip_before_filter [ :check_authorization, :playing, :not_playing, :reminder ]
   # GET /players
   # GET /players.xml
   def index

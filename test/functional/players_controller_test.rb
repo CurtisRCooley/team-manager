@@ -3,7 +3,9 @@ require 'test_helper'
 class PlayersControllerTest < ActionController::TestCase
   def setup
     session[:user_id] = users(:one).id
-    ActionMailer::Base.deliveries.clear
+    ActionMailer::Base.delivery_method = :test
+    ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.deliveries = []
   end
 
   test "should get index" do
@@ -50,6 +52,7 @@ class PlayersControllerTest < ActionController::TestCase
   end
 
   test "should remind players" do
+    session.clear
     get :reminder
     assert_emails 2
     assert_equal %w[player@one.com], ActionMailer::Base.deliveries[0].to

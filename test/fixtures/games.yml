@@ -37,7 +37,7 @@ user_two_game:
   user: two
 
 up_coming_game:
-  game_time: <%= 4.days.from_now %>
+  game_time: <%= 4.days.from_now - 1.hour %>
   location: the location
   opponent: other team
   note: bring white shirt
