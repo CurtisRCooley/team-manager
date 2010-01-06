@@ -54,10 +54,12 @@ class PlayersController < ApplicationController
 
   def reminder
     User.all.each { |user|
-      upcoming_games(user).each { |game|
-	Player.find_all_by_user_id(user.id).each { |player|
-	  UserMailer.deliver_reminder_email(player, game, user)
-	}
+      user.schedules.each { |schedule|
+        upcoming_games(schedule).each { |game|
+          schedule.players.each { |player|
+            UserMailer.deliver_reminder_email(player, game, user)
+          }
+        }
       }
     }
   end
@@ -73,10 +75,10 @@ class PlayersController < ApplicationController
   end
 
   private
-    def upcoming_games(user)
+    def upcoming_games(schedule)
       Game.find(:all,
-        :conditions => ["user_id = ? AND game_time <= ? AND game_time > ?",
-	  user.id, 4.days.from_now, 3.days.from_now])
+        :conditions => ["schedule_id = ? AND game_time <= ? AND game_time > ?",
+	  schedule.id, 4.days.from_now, 3.days.from_now])
     end
 
     def mark_playing_status(status)

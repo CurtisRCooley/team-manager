@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20091129194440
+# Schema version: 20100106181943
 #
 # Table name: users
 #
@@ -15,8 +15,7 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
-  has_many :players
-  has_many :games
+  has_many :schedules
   has_and_belongs_to_many :roles
 
   validates_presence_of :email

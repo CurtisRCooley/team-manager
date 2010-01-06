@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20091129194440
+# Schema version: 20100106181943
 #
 # Table name: games
 #
@@ -20,25 +20,25 @@ game1:
   location: MyString
   opponent: MyString
   note: MyText
-  user: one
+  schedule: user_one_schedule
 
 game2:
   game_time: 2009-10-30 12:15:08
   location: MyString
   opponent: MyString
   note: MyText
-  user: one
+  schedule: user_one_schedule
 
 user_two_game:
   game_time: <%= Date.today %>
   location: MyString
   opponent: MyString
   note: MyText
-  user: two
+  schedule: user_two_schedule
 
 up_coming_game:
   game_time: <%= 4.days.from_now - 1.hour %>
   location: the location
   opponent: other team
   note: bring white shirt
-  user: two
+  schedule: user_two_schedule
