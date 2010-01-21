@@ -15,7 +15,7 @@ class ScheduleController < ApplicationController
   end
 
   def edit
-    @schedule = Schedule.find_by_id(params[:id]) || Schedule.new (:notification_days => 4)
+    @schedule = Schedule.find_by_id(params[:id]) || Schedule.new(:notification_days => 4)
     if request.post? || request.put?
       @schedule.attributes = params[:schedule]
       redirect_to :action => 'show', :id => @schedule and return if @schedule.save
