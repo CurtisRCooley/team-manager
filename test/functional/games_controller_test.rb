@@ -3,6 +3,7 @@ require 'test_helper'
 class GamesControllerTest < ActionController::TestCase
   def setup
     session[:user_id] = users(:one).id
+    session[:schedule_id] = schedules(:user_one_schedule).id
   end
 
   test "should get index" do
@@ -23,7 +24,7 @@ class GamesControllerTest < ActionController::TestCase
       post :create, :game => { }
     end
 
-    assert_equal session[:user_id], assigns(:game).user_id
+    assert_equal session[:schedule_id], assigns(:game).schedule_id
     assert_redirected_to game_path(assigns(:game))
   end
 
@@ -51,7 +52,9 @@ class GamesControllerTest < ActionController::TestCase
   end
 
   test "should show playing status for game" do
-    get :playing_status, {:id => games(:user_two_game).to_param}, {:user_id => users(:two)}
+    get :playing_status, {:id => games(:user_two_game).id}, {:user_id => users(:two), :schedule_id => schedules(:user_two_schedule).id }
+    assert_equal 0, assigns(:undecided).length
+    assert_equal 1, assigns(:not_playing).length
     assert_equal 1, assigns(:playing).length
   end
 end

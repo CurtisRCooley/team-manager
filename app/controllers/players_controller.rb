@@ -1,9 +1,11 @@
+include Email
+
 class PlayersController < ApplicationController
   skip_before_filter [ :check_authorization, :playing, :not_playing, :reminder ]
   # GET /players
   # GET /players.xml
   def index
-    @players = User.find_by_id(session[:user_id]).players
+    @players = Schedule.find_by_id(session[:schedule_id]).players
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,10 +27,10 @@ class PlayersController < ApplicationController
   # GET /players/1/edit
   def edit
     @player = Player.find_by_id(params[:id]) || Player.new
-    @player.user = User.find(session[:user_id])
-    if request.post?
+    @player.schedule = Schedule.find(session[:schedule_id])
+    if request.post? || request.put?
       @player.attributes = params[:player]
-      redirect_to :action => 'index' and return if @player.save
+      redirect_to :action => 'index' and return if @player.save!
     end
   end
 
@@ -66,10 +68,7 @@ class PlayersController < ApplicationController
 
   def email
     if request.post?
-      user = User.find_by_id(session[:user_id])
-      emails = user.players.collect { |player| player.email }
-      UserMailer.deliver_bulk_emails(emails, user.email, params[:subject], params[:message])
-      flash[:notice] = "Message sent"
+      bulk_email Player.find_all_by_schedule_id(session[:schedule_id]).collect { |player| player.email }
       redirect_to home_url
     end
   end
@@ -78,7 +77,8 @@ class PlayersController < ApplicationController
     def upcoming_games(schedule)
       Game.find(:all,
         :conditions => ["schedule_id = ? AND game_time <= ? AND game_time > ?",
-	  schedule.id, 4.days.from_now, 3.days.from_now])
+	  schedule.id, schedule.notification_days.days.from_now,
+          (schedule.notification_days - 1).days.from_now])
     end
 
     def mark_playing_status(status)

@@ -4,4 +4,8 @@ class WelcomeController < ApplicationController
   def index
   end
 
+  def schedule
+    session[:schedule_id] = params[:id]
+    redirect_to :home
+  end
 end

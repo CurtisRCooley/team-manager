@@ -1,16 +1,16 @@
 # == Schema Information
-# Schema version: 20100106181943
+# Schema version: 20100106185042
 #
 # Table name: games
 #
-#  id         :integer         not null, primary key
-#  game_time  :datetime
-#  location   :string(255)
-#  opponent   :string(255)
-#  note       :text
-#  created_at :datetime
-#  updated_at :datetime
-#  user_id    :integer
+#  id          :integer         not null, primary key
+#  game_time   :datetime
+#  location    :string(255)
+#  opponent    :string(255)
+#  note        :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  schedule_id :integer
 #
 
 class Game < ActiveRecord::Base

@@ -1,0 +1,7 @@
+<h2>Schedules</h2>
+<p>Here is a list of your schedules. Free accounts are limited to one schedule per user</p>
+<ul>
+<% @schedules.each do |schedule| %>
+  <li><%= link_to schedule.name, :action => 'show', :id => schedule %></li>
+<% end %>
+</ul>

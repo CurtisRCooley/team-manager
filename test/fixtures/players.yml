@@ -1,14 +1,14 @@
 # == Schema Information
-# Schema version: 20100106181943
+# Schema version: 20100106185042
 #
 # Table name: players
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#  user_id    :integer
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  email       :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  schedule_id :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

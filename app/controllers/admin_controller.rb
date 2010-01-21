@@ -1,4 +1,5 @@
 require 'digest/sha1'
+include Email
 
 class AdminController < ApplicationController
   before_filter :check_authentication, :except => [:login, :validate, :register]
@@ -29,6 +30,7 @@ class AdminController < ApplicationController
 
   def logout
     session[:user_id] = nil
+    session[:schedule_id] = nil
     redirect_to '/'
   end
 
@@ -38,8 +40,11 @@ class AdminController < ApplicationController
 
   def validate
     @user = User.find(params[:id])
-    if (@user.registration_key == params[:registration_key])
+    if (@user && @user.registration_key == params[:registration_key])
       @user.registration_key = nil
+      @user.schedules << Schedule.new(:name => "#{@user.email} Schedule", 
+                                      :notification_days => 4, 
+                                      :minimum_players => 0)
       @user.save
       flash[:notice] = "Thank you. Your Registration is complete. You may login"
       redirect_to :action => 'login'
@@ -55,11 +60,8 @@ class AdminController < ApplicationController
 
   def email
     if request.post?
-      user = User.find_by_id(session[:user_id])
-      emails = user.players.collect { |player| player.email }
-      UserMailer.deliver_bulk_emails(emails, user.email, params[:subject], params[:message])
-      flash[:notice] = "Message sent"
-      redirect_to home_url
+      bulk_email User.all.collect { |user| user.email }
+      redirect_to :controller => 'admin'
     end
   end
 

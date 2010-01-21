@@ -3,6 +3,7 @@ require 'test_helper'
 class PlayersControllerTest < ActionController::TestCase
   def setup
     session[:user_id] = users(:one).id
+    session[:schedule_id] = schedules(:user_two_schedule).id
     ActionMailer::Base.delivery_method = :test
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
@@ -24,7 +25,7 @@ class PlayersControllerTest < ActionController::TestCase
       post :edit, :player => { }
     end
 
-    assert_equal users(:one).id, assigns(:player).user_id
+    assert_equal schedules(:user_two_schedule).id, assigns(:player).schedule_id
     assert_redirected_to :action => 'index'
   end
 
@@ -40,7 +41,7 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should update player" do
     put :edit, :id => players(:player_one).to_param, :player => { }
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should destroy player" do
@@ -61,7 +62,7 @@ class PlayersControllerTest < ActionController::TestCase
   end
 
   test "should email players" do
-    post :email, {:subject => "subject", :message => "the message"}, {:user_id => users(:two).id }
+    post :email, {:subject => "subject", :message => "the message"}, {:user_id => users(:two).id, :schedule_id => schedules(:user_two_schedule).id }
     assert_emails 1
     assert_equal 1, ActionMailer::Base.deliveries.length
     assert_equal %w[player@one.com player@two.com], ActionMailer::Base.deliveries[0].to

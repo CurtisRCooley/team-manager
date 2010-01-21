@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @games = User.find_by_id(session[:user_id]).games
+    @games = Schedule.find_by_id(session[:schedule_id]).games
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,7 @@ class GamesController < ApplicationController
   # POST /games.xml
   def create
     @game = Game.new(params[:game])
-    @game.user_id = session[:user_id]
+    @game.schedule_id = session[:schedule_id]
 
     respond_to do |format|
       if @game.save
@@ -90,13 +90,13 @@ class GamesController < ApplicationController
     @playing = []
     @not_playing = []
     @undecided = []
-    Player.find_all_by_user_id(session[:user_id]).each do |player|
+    Player.find_all_by_schedule_id(session[:schedule_id]).each do |player|
       playing_status = PlayingStatus.find_by_game_id_and_player_id(@game.id, player.id)
       if playing_status
         if playing_status.playing_status == PlayingStatus::PLAYING
-          @not_playing << player
-        else
           @playing << player
+        else
+          @not_playing << player
         end
       else
         @undecided << player

@@ -1,0 +1,15 @@
+<h2>Schedule <%= @schedule.name %></h2>
+<table>
+  <tr>
+    <td>Schedule Note</td><td><%= @schedule.note %></td>
+  </tr>
+  <tr>
+    <td>Minimum Players</td><td><%= @schedule.minimum_players %></td>
+  </tr>
+  <tr>
+    <td>Notification Days</td><td><%= @schedule.notification_days %></td>
+  </tr>
+</table>
+<%= link_to "Edit", :action => 'edit', :id => @schedule %> |
+<%= link_to "Games", :controller => 'games' %> |
+<%= link_to "Players", :controller => 'players' %>

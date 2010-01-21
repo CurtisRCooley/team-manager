@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100106181943
+# Schema version: 20100106185042
 #
 # Table name: users
 #
@@ -22,3 +22,8 @@ one:
 two:
   email: two@bar.org
   hashed_password: MyString
+
+new:
+  email: new@org.com
+  hashed_password: secret
+  registration_key: registration_key

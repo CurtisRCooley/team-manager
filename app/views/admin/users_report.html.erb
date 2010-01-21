@@ -1,13 +1,15 @@
 <%= link_to "Home", :home %>
 <% @users.each do |user| %>
   <h3><%= user.email %></h3>
+  <% user.schedules.each do |schedule| %>
+  <h4>Schedule <%= schedule.name %></h4>
   <table style='border:none'>
     <tr>
       <td>
 	  Players
 	  <table>
 	  <tr><th>Name</th><th>Email</th></tr>
-	  <% user.players.each do |player| %>
+	  <% schedule.players.each do |player| %>
 	    <tr><td><%= player.name %></td><td><%= player.email %></td</tr>
 	  <% end %>
 	  </table>
@@ -16,7 +18,7 @@
 	Games
 	<table>
 	  <tr><th>Time</th><th>Opponent</th><th>Location</th></tr>
-	  <% user.games.each do |game| %>
+	  <% schedule.games.each do |game| %>
             <tr>
 	      <td><%= game.game_time %></td>
               <td><%= game.opponent %></td>
@@ -25,4 +27,5 @@
 	  <% end %>
 	</table>
   </table>
+  <% end %>
 <% end %>
