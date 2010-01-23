@@ -1,3 +1,5 @@
 <h1>Email Players</h1>
 <%= render "shared/email" %>
-<%= link_to 'Back', home_url %>
+<%= link_to 'Schedule', :controller => 'schedule', :action => 'show', :id => session[:schedule_id] %> |
+<%= link_to 'Home', home_url %> |
+<%= link_to 'Back', :action => 'index' %>

@@ -54,7 +54,7 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should remind players" do
     session.clear
-    get :reminder
+    get :reminder, {}, {:schedule_id => schedules(:user_two_schedule)}
     assert_emails 2
     assert_equal %w[player@one.com], ActionMailer::Base.deliveries[0].to
     assert_equal "Game Reminder", ActionMailer::Base.deliveries[0].subject

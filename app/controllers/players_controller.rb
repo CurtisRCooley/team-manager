@@ -55,11 +55,12 @@ class PlayersController < ApplicationController
   end
 
   def reminder
+    schedule = Schedule.find(session[:schedule_id])
     User.all.each { |user|
       user.schedules.each { |schedule|
         upcoming_games(schedule).each { |game|
           schedule.players.each { |player|
-            UserMailer.deliver_reminder_email(player, game, user)
+            UserMailer.deliver_reminder_email(player, game, user, schedule)
           }
         }
       }

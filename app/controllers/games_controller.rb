@@ -60,7 +60,7 @@ class GamesController < ApplicationController
   # PUT /games/1.xml
   def update
     @game = Game.find(params[:id])
-
+    update_players(@game, params[:game])
     respond_to do |format|
       if @game.update_attributes(params[:game])
         flash[:notice] = 'Game was successfully updated.'
@@ -102,5 +102,13 @@ class GamesController < ApplicationController
         @undecided << player
       end
     end
+  end
+
+  private
+  def update_players(old_game, new_game_params)
+    players_email = Schedule.find(session[:schedule_id]).players.collect do |player| 
+      player.email
+    end
+    UserMailer.deliver_game_change(players_email, old_game, Game.new(new_game_params), User.find(session[:user_id]))
   end
 end

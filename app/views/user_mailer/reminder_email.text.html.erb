@@ -6,9 +6,10 @@
   <body>  
     <h1>Game Reminder</h1>
     Location: <%= @game.location %><br>
-    Time: <%= @game.game_time %><br>
+    Time: <%= @game.game_time.strftime("%a %b %d %I:%M %p")  %><br>
     Opponent: <%= @game.opponent %><br>
-    <%= @game.note %>
+    <p><%= @game.note %></p>
+    <p><%= @schedule.note %></p>
     <br>
     <p>Please indicate if you are playing or not playing by clicking on the appropriate link below.</p>
     <%= link_to "Playing", playing_url(:player_id => @player.id, :game_id => @game.id, :host => 'team-manager.heroku.com') %>

@@ -39,8 +39,13 @@ class GamesControllerTest < ActionController::TestCase
   end
 
   test "should update game" do
-    put :update, :id => games(:game1).to_param, :game => { }
+    put :update, :id => games(:game1).to_param, :game => { :game_time => Date.today}
     assert_redirected_to game_path(assigns(:game))
+  end
+
+  test "should email players on game change" do
+    put :update, :id => games(:game1).to_param, :game => {:game_time => Date.today }
+    assert_emails 1
   end
 
   test "should destroy game" do

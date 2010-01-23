@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>  
+  <head>  
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />  
+  </head>  
+  <body>  
+    <h1>Game Change Update</h1>
+    <h3>Game</h3>
+    Location: <%= @old_game.location %><br>
+    Time: <%= @old_game.game_time.strftime("%a %b %d %I:%M %p")  %><br>
+    Opponent: <%= @old_game.opponent %><br>
+    <h3>Has changed to:</h3>
+    Location: <%= @new_game.location %><br>
+    Time: <%= @new_game.game_time.strftime("%a %b %d %I:%M %p")  %><br>
+    Opponent: <%= @new_game.opponent %><br>
+    <%= @new_game.note %>
+  </body> 
+</html>
