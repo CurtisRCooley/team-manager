@@ -1,3 +1,4 @@
+<div id='body'>
 <h2>Schedule <%= @schedule.name %></h2>
 <table>
   <tr>
@@ -10,7 +11,10 @@
     <td>Notification Days</td><td><%= @schedule.notification_days %></td>
   </tr>
 </table>
-<%= link_to "Edit", :action => 'edit', :id => @schedule %> |
-<%= link_to "Games", :controller => 'games' %> |
-<%= link_to "Players", :controller => 'players' %> |
-<%= link_to "Home", :home %>
+</div>
+<div id='menu'>
+	<%= link_to "Edit", :action => 'edit', :id => @schedule %><br>
+	<%= link_to "Games", :controller => 'games' %><br> 
+	<%= link_to "Players", :controller => 'players' %><br>
+	<%= link_to "Home", :home %><br>
+</div>
