@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag 'application' %>
 </head>
 <body>
+<div id='frame'>
   <div id='header'>
     <span class='login-links'>
     <% if session[:user_id] %>
@@ -20,12 +21,25 @@
     </span>
     <h1>Rec Team Captain <em>Beta</em></h1>
   </div>
-<p style="color: darkgreen"><%= flash[:notice] %></p>
-
-<%= yield %>
-
-<div id='footer'>
-  Rec Team Manager &trade; LMCR Enterprises
+  <div id='main'>
+    <p style="color: darkgreen"><%= flash[:notice] %></p>
+    <%= yield %>
+  </div>
+  <div id='google_bar'>
+    <script type="text/javascript"><!-- google_ad_client = "pub-4838121090712922";
+	/* 300x250, created 1/24/10 */
+	google_ad_slot = "3440169594";
+	google_ad_width = 300;
+	google_ad_height = 250;
+	//-->
+    </script>
+	<script type="text/javascript"
+	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+  </div>
+  <div id='footer'>
+    Rec Team Manager &trade; LMCR Enterprises
+  </div>
 </div>
 <script type="text/javascript">
 var uservoiceOptions = {
