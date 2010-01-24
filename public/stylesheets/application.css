@@ -93,7 +93,7 @@ a:hover { color: #fff; background-color:#000; }
 
 #menu {
   float: left;
-  width: 150px;
+  width: 120px;
 }
 
 #main {
@@ -102,13 +102,16 @@ a:hover { color: #fff; background-color:#000; }
 
 #body {
   float: right;
-  width: 600px;
-  border-right: thin solid black;
+  width: 690px;
+  border-left: thin solid black;
+  margin-left: 1em;
+  padding-left: 1em;
 }
 
 #google_bar {
 	float: right;
-	width: 260px;
+	width: 150px;
+	margin-top: 1em;
 }
 
 #footer {
