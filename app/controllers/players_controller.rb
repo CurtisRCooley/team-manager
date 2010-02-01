@@ -30,7 +30,7 @@ class PlayersController < ApplicationController
     @player.schedule = Schedule.find(session[:schedule_id])
     if request.post? || request.put?
       @player.attributes = params[:player]
-      redirect_to :action => 'index' and return if @player.save!
+      redirect_to :action => 'show', :id => @player and return if @player.save!
     end
   end
 

@@ -7,6 +7,7 @@ class ScheduleController < ApplicationController
 
   def show
     @schedule = Schedule.find_by_id(params[:id])
+    @games = @schedule.games
     if (session[:user_id] != @schedule.user_id)
       flash[:notice] = "You are not authorized to view that schedule"
       redirect_to :home

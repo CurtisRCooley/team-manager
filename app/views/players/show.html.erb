@@ -2,12 +2,14 @@
   <b>Name:</b>
   <%=h @player.name %>
 </p>
-
 <p>
   <b>Email:</b>
   <%=h @player.email %>
 </p>
-
+<p>
+  <b>Reserve:</b>
+  <%=h @player.reserve %>
+</p>
 
 <%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back', :controller => 'admin' %>
+<%= link_to 'Back', :controller => 'players' %>

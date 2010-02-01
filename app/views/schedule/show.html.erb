@@ -1,16 +1,9 @@
 <div id='body'>
 <h2>Schedule <%= @schedule.name %></h2>
-<table>
-  <tr>
-    <td>Schedule Note</td><td><%= @schedule.note %></td>
-  </tr>
-  <tr>
-    <td>Minimum Players</td><td><%= @schedule.minimum_players %></td>
-  </tr>
-  <tr>
-    <td>Notification Days</td><td><%= @schedule.notification_days %></td>
-  </tr>
-</table>
+Schedule Note:<br><%= @schedule.note %>
+<p>Minimum Players: <%= @schedule.minimum_players %></p>
+<p>Notification Days: <%= @schedule.notification_days %></p>
+<%= render :partial => '/games/games' %>
 </div>
 <div id='menu'>
 	<%= link_to "Edit", :action => 'edit', :id => @schedule %><br>

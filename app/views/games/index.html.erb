@@ -1,29 +1,6 @@
 <h1>Games</h1>
-
-<table>
-  <tr>
-    <th>Game time</th>
-    <th>Location</th>
-    <th>Opponent</th>
-    <th>Note</th>
-  </tr>
-
-<% @games.each do |game| %>
-  <tr>
-    <td><%=h game.game_time.strftime("%a %b %d %I:%M %p") %></td>
-    <td><%=h game.location %></td>
-    <td><%=h game.opponent %></td>
-    <td><%=h game.note %></td>
-    <td><%= link_to 'Playing Status', playing_status_path(game) %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+<%= render :partial => 'games' %>
 <br />
-
 <%= link_to 'New game', new_game_path %>
  | 
  <%= link_to 'Schedule', :controller => 'schedule', :action => 'show', :id => session[:schedule_id] %>

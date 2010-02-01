@@ -26,7 +26,7 @@ class PlayersControllerTest < ActionController::TestCase
     end
 
     assert_equal schedules(:user_two_schedule).id, assigns(:player).schedule_id
-    assert_redirected_to :action => 'index'
+    assert_redirected_to :action => 'show', :id => assigns(:player)
   end
 
   test "should show player" do
