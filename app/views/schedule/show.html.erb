@@ -1,13 +1,13 @@
+<div id='menu'>
+  <%= link_to "Edit", :action => 'edit', :id => @schedule %><br>
+  <%= link_to "Games", :controller => 'games' %><br> 
+  <%= link_to "Players", :controller => 'players' %><br>
+  <%= link_to "Home", :home %><br>
+</div>
 <div id='body'>
 <h2>Schedule <%= @schedule.name %></h2>
 Schedule Note:<br><%= @schedule.note %>
 <p>Minimum Players: <%= @schedule.minimum_players %></p>
 <p>Notification Days: <%= @schedule.notification_days %></p>
 <%= render :partial => '/games/games' %>
-</div>
-<div id='menu'>
-	<%= link_to "Edit", :action => 'edit', :id => @schedule %><br>
-	<%= link_to "Games", :controller => 'games' %><br> 
-	<%= link_to "Players", :controller => 'players' %><br>
-	<%= link_to "Home", :home %><br>
 </div>

@@ -1,4 +1,6 @@
 <%= stylesheet_link_tag 'playing_status' %>
+  <%= link_to "Schedule", :controller => 'schedule', :action => 'show', :id => Schedule.find(session[:schedule_id]) %> |
+  <%= link_to "Games", :controller => 'games' %>
 <h1>Playing Status Report</h1>
 <h2>Game on <%= @game.game_time.strftime("%a %b %d %I:%M %p")%></h2>
 <div id='playing'>
@@ -30,7 +32,4 @@
       <tr><td><%= player.name %></td></tr>
     <% } %>
   </table>
-</div>
-<div id='menu'>
-  <%= link_to "Back", :controller => 'games' %>
 </div>

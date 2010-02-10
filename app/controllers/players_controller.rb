@@ -59,7 +59,7 @@ class PlayersController < ApplicationController
     User.all.each { |user|
       user.schedules.each { |schedule|
         upcoming_games(schedule).each { |game|
-          schedule.players.each { |player|
+          Player.find(:all, :conditions => ["schedule_id = ? and (reserve = ? or reserve is null)", schedule.id, false]).each { |player|
             UserMailer.deliver_reminder_email(player, game, user, schedule)
           }
         }

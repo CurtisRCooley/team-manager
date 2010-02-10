@@ -18,8 +18,15 @@ player_one:
   name: Player One
   email: player@one.com
   schedule: user_two_schedule
+  reserve: false
 
 player_two:
   name: Player Two
   email: player@two.com
   schedule: user_two_schedule
+
+inactive:
+  name: Inactive
+  email: in@cti.ve
+  schedule: user_two_schedule
+  reserve: true
