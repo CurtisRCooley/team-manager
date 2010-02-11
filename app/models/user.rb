@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100126032628
+# Schema version: 20100211071922
 #
 # Table name: users
 #
@@ -10,6 +10,7 @@
 #  updated_at       :datetime
 #  salt             :string(255)
 #  registration_key :string(255)
+#  end_date         :datetime
 #
 
 require 'digest/sha1'
