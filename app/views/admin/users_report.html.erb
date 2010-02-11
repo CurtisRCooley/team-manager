@@ -1,18 +1,19 @@
 <%= link_to "Home", :home %>
 <% @users.each do |user| %>
   <h3><%= user.email %></h3>
+  Premium End Date: <%= user.end_date %>
   <% user.schedules.each do |schedule| %>
   <h4>Schedule <%= schedule.name %></h4>
-  <table style='border:none'>
+  <table style='border:none;'>
     <tr>
       <td>
-	  Players
-	  <table>
+	Players
+	<table>
 	  <tr><th>Name</th><th>Email</th></tr>
 	  <% schedule.players.each do |player| %>
 	    <tr><td><%= player.name %></td><td><%= player.email %></td</tr>
 	  <% end %>
-	  </table>
+	</table>
       </td>
       <td>
 	Games
