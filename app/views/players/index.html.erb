@@ -1,3 +1,12 @@
+<div id='menu'>
+  <ul>
+    <li><%= link_to 'New player', :action => 'edit' %></li>
+    <li><%= link_to 'Team', :controller => 'schedule', :action => 'show', :id => session[:schedule_id] %></li>
+    <li><%= link_to 'Email Players', :action => 'email' %></li>
+    <li><%= link_to 'Home', :home %></li>
+  </ul>
+ </div>
+<div id='body'>
 <h1>Listing players</h1>
 
 <table>
@@ -16,13 +25,4 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New player', :action => 'edit' %>
- | 
- <%= link_to 'Schedule', :controller => 'schedule', :action => 'show', :id => session[:schedule_id] %>
- |
- <%= link_to 'Email Players', :action => 'email' %>
- |
- <%= link_to 'Home', :home %>
+</div>

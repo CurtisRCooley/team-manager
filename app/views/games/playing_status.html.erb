@@ -1,35 +1,35 @@
 <%= stylesheet_link_tag 'playing_status' %>
-  <%= link_to "Schedule", :controller => 'schedule', :action => 'show', :id => Schedule.find(session[:schedule_id]) %> |
-  <%= link_to "Games", :controller => 'games' %>
+<div id='menu'>
+  <ul>
+    <li><%= link_to "Schedule", :controller => 'schedule', :action => 'show', :id => Schedule.find(session[:schedule_id]) %></li>
+    <li><%= link_to "Games", :controller => 'games' %></li>
+  </ul>
+</div>
+<div id='body'>
 <h1>Playing Status Report</h1>
 <h2>Game on <%= @game.game_time.strftime("%a %b %d %I:%M %p")%></h2>
 <div id='playing'>
-  <table>
-    <tr>
-      <th>Playing</th>
-    </tr>
+  <ul>
+      <lh>Playing</lh>
     <% @playing.each { |player| %>
-    <tr><td><%= player.name %></td></tr>
+    <li><%= player.name %></li>
     <% } %>
-  </table>
+  </ul>
 </div>
 <div id='not_playing'>
-  <table>
-    <tr>
-      <th>Not Playing</th>
-    </tr>
+  <ul>
+      <lh>Not Playing</lh>
     <% @not_playing.each { |player| %>
-      <tr><td><%= player.name %></td></tr>
+      <li><%= player.name %></li>
     <% } %>
-  </table>
+  </ul>
 </div>
 <div id= 'undecided'>
-  <table>
-    <tr>
-      <th>Undecided</th>
-    </tr>
+  <ul>
+      <lh>Undecided</lh>
     <% @undecided.each { |player| %>
-      <tr><td><%= player.name %></td></tr>
+      <li><%= player.name %></li>
     <% } %>
-  </table>
+  </ul>
+</div>
 </div>

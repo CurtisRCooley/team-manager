@@ -1,8 +1,11 @@
+<div id='menu'>
+  <ul>
+    <li><%= link_to 'New game', new_game_path %></li>
+    <li><%= link_to 'Team', :controller => 'schedule', :action => 'show', :id => session[:schedule_id] %></li>
+    <li><%= link_to 'Home', :home %></li>
+  </ul>
+</div>
+<div id='body'>
 <h1>Games</h1>
 <%= render :partial => 'games' %>
-<br />
-<%= link_to 'New game', new_game_path %>
- | 
- <%= link_to 'Schedule', :controller => 'schedule', :action => 'show', :id => session[:schedule_id] %>
- |
- <%= link_to 'Home', :home %>
+</div>

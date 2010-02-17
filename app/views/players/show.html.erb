@@ -1,3 +1,10 @@
+<div id='menu'>
+  <ul>
+    <li><%= link_to 'Edit', edit_player_path(@player) %></li>
+    <li><%= link_to 'Back', :controller => 'players' %></li>
+  </ul>
+</div>
+<div id='body'>
 <p>
   <b>Name:</b>
   <%=h @player.name %>
@@ -8,8 +15,6 @@
 </p>
 <p>
   <b>Reserve:</b>
-  <%=h @player.reserve %>
+  <%=h @player.reserve ? 'Yes' : 'No' %>
 </p>
-
-<%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back', :controller => 'players' %>
+</div>

@@ -1,3 +1,7 @@
+<div id='menu'>
+  <%= link_to 'Back', :controller => 'admin' %>
+</div>
+<div id='body'>
 <h1>New player</h1>
 
 <% form_for(@player) do |f| %>
@@ -15,5 +19,4 @@
     <%= f.submit 'Create' %>
   </p>
 <% end %>
-
-<%= link_to 'Back', :controller => 'admin' %>
+</div>

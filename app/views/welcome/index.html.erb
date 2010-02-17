@@ -1,7 +1,12 @@
 <div id='menu'>
   <ul>
     <% if session[:user_id] %>
-      <li><%= link_to 'Your Schedules', :controller => 'schedule' %></li>
+      <li>Your Teams</li>
+      <ul>
+      <% User.find(session[:user_id]).schedules.each do |schedule| %>
+        <li><%= link_to "#{schedule.name}", :controller => 'schedule', :action => 'show', :id => schedule %></li>
+      <% end %>
+      </ul>
       <li><%= link_to 'Logout', :controller => 'admin', :action => 'logout' %></li>
     <% else %>
       <li><%= link_to 'Login', :controller => 'admin', :action => 'login' %>
