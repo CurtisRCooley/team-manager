@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100211071922
+# Schema version: 20100213195716
 #
 # Table name: rights
 #
