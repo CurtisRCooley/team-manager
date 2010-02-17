@@ -52,6 +52,7 @@ class PlayersController < ApplicationController
 
   def not_playing
     mark_playing_status(PlayingStatus::NOT_PLAYING)
+    email_reserve
   end
 
   def reminder
@@ -94,5 +95,19 @@ class PlayersController < ApplicationController
       @player.playing_statuses << playing_status
       @game.save
       @player.save
+    end
+
+    def email_reserve
+      game = Game.find_by_id(params[:game_id])
+      user = User.find(session[:user_id])
+      schedule = Schedule.find(session[:schedule_id])
+      schedule.reserves.each do |reserve|
+        if ! game.players.include?(reserve) 
+          @player = reserve
+	  game.players << reserve
+          break
+	end	  
+      end
+      UserMailer.deliver_reminder_email(@player, game, user, schedule)
     end
 end

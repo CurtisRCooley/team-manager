@@ -63,7 +63,7 @@ class PlayersControllerTest < ActionController::TestCase
     post :email, {:subject => "subject", :message => "the message"}, {:user_id => users(:two).id, :schedule_id => schedules(:user_two_schedule).id }
     assert_emails 1
     assert_equal 1, ActionMailer::Base.deliveries.length
-    assert_equal %w[player@one.com in@cti.ve player@two.com], ActionMailer::Base.deliveries[0].to
+    assert_equal %w[in@cti.ve player@one.com player@two.com reserve@me.com].sort, ActionMailer::Base.deliveries[0].to.sort
     assert_equal "subject", ActionMailer::Base.deliveries[0].subject
     assert_equal users(:two).email, ActionMailer::Base.deliveries[0].from[0]
     assert_equal "Message sent", flash[:notice]
@@ -83,5 +83,15 @@ class PlayersControllerTest < ActionController::TestCase
     get :not_playing, :player_id => player.to_param, :game_id => game.to_param
     assert_equal PlayingStatus::NOT_PLAYING, player.playing_statuses[0].playing_status 
     assert_equal player.playing_statuses[0], game.playing_statuses[0]
+  end
+
+  test "should email reserve when player not playing" do
+    player = players(:player_one)
+    game = games(:game1)
+    get :not_playing, :player_id => player.to_param, :game_id => game.to_param
+    assert_emails 1
+    to = ActionMailer::Base.deliveries[0].to
+    get :not_playing, :player_id => player.to_param, :game_id => game.to_param
+    assert_not_equal to, ActionMailer::Base.deliveries[1].to
   end
 end

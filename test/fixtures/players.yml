@@ -25,8 +25,14 @@ player_two:
   email: player@two.com
   schedule: user_two_schedule
 
-inactive:
+reserve:
   name: Inactive
   email: in@cti.ve
+  schedule: user_two_schedule
+  reserve: true
+
+reserve2:
+  name: Inactive
+  email: reserve@me.com
   schedule: user_two_schedule
   reserve: true

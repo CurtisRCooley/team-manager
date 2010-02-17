@@ -17,4 +17,5 @@ class Game < ActiveRecord::Base
   belongs_to :schedule
   has_many :playing_statuses
   has_many :players, :through => :playing_statuses
+  has_and_belongs_to_many :players
 end
