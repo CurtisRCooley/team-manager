@@ -72,6 +72,7 @@ class PlayersControllerTest < ActionController::TestCase
   end
 
   test "should mark player as playing" do
+    session.clear
     player = players(:player_one)
     game = games(:game1)
     get :playing, :player_id => player.to_param, :game_id => game.to_param
@@ -80,6 +81,7 @@ class PlayersControllerTest < ActionController::TestCase
   end
 
   test "should mark player as not playing" do
+    session.clear
     player = players(:player_one)
     game = games(:game1)
     get :not_playing, :player_id => player.to_param, :game_id => game.to_param

@@ -99,8 +99,8 @@ class PlayersController < ApplicationController
 
     def email_reserve
       game = Game.find_by_id(params[:game_id])
-      user = User.find(session[:user_id])
-      schedule = Schedule.find(session[:schedule_id])
+      schedule = game.schedule
+      user = schedule.user
       schedule.reserves.each do |reserve|
         if ! game.players.include?(reserve) 
           @player = reserve
