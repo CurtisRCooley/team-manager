@@ -52,9 +52,11 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should remind players" do
     session.clear
-    get :reminder, {}, {:schedule_id => schedules(:user_two_schedule)}
-    assert_emails 2
-    assert_equal %w[player@one.com], ActionMailer::Base.deliveries[0].to
+    get :reminder
+    assert_emails 3
+    to_list = ActionMailer::Base.deliveries.collect {|delivery| delivery.to.to_s}
+    assert to_list.include?("player@one.com"), "Expected to list to contain 'player@one.com'"
+    assert to_list.include?(users(:two).email)
     assert_equal "Game Reminder", ActionMailer::Base.deliveries[0].subject
     assert_equal users(:two).email, ActionMailer::Base.deliveries[0].from[0]
   end

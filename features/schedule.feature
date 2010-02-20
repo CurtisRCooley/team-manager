@@ -8,7 +8,6 @@ Feature: Schedule Feature
       And schedule the_schedule belongs to user markEmark
       And game game1 belongs to schedule the_schedule
       And I go to the home page
-      And I follow "Your Schedules"
     When I follow "the_schedule"
     Then I should see "Games"
       And I should see "Game time"

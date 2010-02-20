@@ -19,6 +19,6 @@ class AdminControllerTest < ActionController::TestCase
     assert_equal 1, schedules.size
     assert_equal 4, schedules[0].notification_days 
     assert_equal 0, schedules[0].minimum_players
-    assert_equal "#{user.email} Schedule", schedules[0].name
+    assert_equal "#{user.email}'s Team", schedules[0].name
   end
 end

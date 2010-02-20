@@ -42,7 +42,7 @@ class AdminController < ApplicationController
     @user = User.find(params[:id])
     if (@user && @user.registration_key == params[:registration_key])
       @user.registration_key = nil
-      @user.schedules << Schedule.new(:name => "#{@user.email} Schedule", 
+      @user.schedules << Schedule.new(:name => "#{@user.email}'s Team", 
                                       :notification_days => 4, 
                                       :minimum_players => 0)
       @user.save
