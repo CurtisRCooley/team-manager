@@ -15,8 +15,8 @@
 
 class Schedule < ActiveRecord::Base
   belongs_to :user
-  has_many :games
-  has_many :players
+  has_many :games, :order => 'game_time'
+  has_many :players, :order => 'name'
   has_many :reserves,
 	   :class_name => "Player",
 	   :finder_sql => "select * from players where reserve = 't'"

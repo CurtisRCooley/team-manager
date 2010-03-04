@@ -21,6 +21,7 @@ class AdminController < ApplicationController
       user = User.authenticate(params[:email], params[:password])
       if user
         session[:user_id] = user.id
+        session[:schedule_id] = user.schedules[0]
         redirect_to :home
       else
         flash.now[:notice] = 'Invalid user/password'

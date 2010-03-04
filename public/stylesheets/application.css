@@ -7,9 +7,6 @@ body, p, ol, ul, td {
 }
 
 #header {
-  background-color: darkgreen;
-  color: linen;
-  border: 2px solid black;
   padding: 1em;
 }
 
@@ -18,8 +15,8 @@ body, p, ol, ul, td {
   font-size: smaller;
 }  
 
-a.header { color: palegreen; }
-a.header:visited { color: palegreen; text-align: right;}
+a.header { color: darkgreen; }
+a.header:visited { color: darkgreen; text-align: right;}
 a.header:hover {color: darkgreen; background-color: palegreen}
 
 p.popup {

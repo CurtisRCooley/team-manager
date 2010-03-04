@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Reserve</th>
+  </tr>
+
+<% @players.each do |player| %>
+  <tr>
+    <td><%=h player.name %></td>
+    <td><%=h player.email %></td>
+    <td style='text-align: center;'><%=h 'X' if player.reserve? %></td>
+    <td><%= link_to 'Show', :controller => 'players', :action => 'show', :id => player %></td>
+    <td><%= link_to 'Edit', :controller => 'players', :action => 'edit', :id => player %></td>
+    <td><%= link_to 'Destroy', {:controller => 'players', :action => 'destroy', :id => player}, {:confirm => 'Are you sure?', :method => :delete} %></td>
+  </tr>
+<% end %>
+</table>

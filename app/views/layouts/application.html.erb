@@ -4,12 +4,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta name="description" content="Team Management" />
+  <meta name="keywords" content="Soccer,Basketball,Softball,Team,Management,Darts,Bowling,Hockey,Pool,Billiards,Baseball,Football" />
+  <meta name="author" content="Curtis R Cooley" />
   <title>Rec Team Captain</title>
   <%= stylesheet_link_tag 'application' %>
 </head>
 <body>
 <div id='frame'>
   <div id='header'>
+    <img src='/images/header.png' />
     <span class='login-links'>
     <% if session[:user_id] %>
       logged in as <%= User.find_by_id(session[:user_id]).email %>
@@ -19,7 +23,6 @@
       <%= link_to "Register", :register, :class => 'header' %>
     <% end %>
     </span>
-    <h1>Rec Team Captain</h1>
   </div>
   <div id='main'>
     <p style="color: darkgreen"><%= flash[:notice] %></p>

@@ -8,23 +8,5 @@
  </div>
 <div id='body'>
 <h1>Listing players</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Reserve</th>
-  </tr>
-
-<% @players.each do |player| %>
-  <tr>
-    <td><%=h player.name %></td>
-    <td><%=h player.email %></td>
-    <td style='text-align: center;'><%=h 'X' if player.reserve? %></td>
-    <td><%= link_to 'Show', :action => 'show', :id => player %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => player %></td>
-    <td><%= link_to 'Destroy', {:action => 'destroy', :id => player}, {:confirm => 'Are you sure?', :method => :delete} %></td>
-  </tr>
-<% end %>
-</table>
+<%= render :partial => "/shared/players", :object => @players %>
 </div>

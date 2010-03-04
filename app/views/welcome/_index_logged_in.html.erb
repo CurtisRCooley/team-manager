@@ -1,0 +1,6 @@
+<h1>Your Schedule</h1>
+<%= link_to "Add Game", :controller => 'games', :action => 'new' %>
+<%= render :partial => '/shared/games', :object => @games %>
+<h1>Your Players</h1>
+<%= link_to "Add Player", :controller => 'players', :action => 'edit' %>
+<%= render :partial => '/shared/players', :object => @players %>

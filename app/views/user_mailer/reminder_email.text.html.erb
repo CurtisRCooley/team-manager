@@ -17,8 +17,8 @@
     <p><%= @game.note %></p>
     <p><%= @schedule.note %></p>
     <p>Please indicate if you are playing or not playing by clicking on the appropriate link below.</p>
-    <%= link_to "Playing", playing_url(:player_id => @player.id, :game_id => @game.id, :host => 'team-manager.heroku.com') %>
+    <%= link_to "Playing", playing_url(:player_id => @player.id, :game_id => @game.id, :host => 'www.recteamcaptain.com') %>
     <br>
-    <%= link_to "Not Playing", not_playing_url(:player_id => @player, :game_id => @game.id, :host => 'team-manager.heroku.com') %>
+    <%= link_to "Not Playing", not_playing_url(:player_id => @player, :game_id => @game.id, :host => 'www.recteamcaptain.com') %>
   </body> 
 </html>

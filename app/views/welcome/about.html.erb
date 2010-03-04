@@ -1,0 +1,34 @@
+<div id='menu'>
+  <ul>
+    <li><%= link_to 'Home', :action => 'index' %></li>
+    <li><%= link_to 'Features', :action => 'features' %></li>
+    <% if session[:user_id] %>
+      <li><%= link_to 'Logout', :controller => 'admin', :action => 'logout' %></li>
+    <% else %>
+      <li><%= link_to 'Login', :controller => 'admin', :action => 'login' %>
+      <li><%= link_to 'Register', :controller => 'admin', :action => 'register' %>
+    <% end %>
+  </ul>
+</div>
+<div id='body'>
+  <h1>About Rec Team Captain</h1>
+  <p>Rec Team Captain helps you manage your recreational soccer, softball, basketball, hockey, or any sport teams. It automatically reminds players of upcoming games by emailing all your players 4 days before each game (Premium members can configure when emails are sent).</p>
+  <p>It can also remind players in your billiards, dart, or bowling or just about any type of sport or recreational league.</p>
+  <h3>Getting Started</h3>
+  <dl>
+    <dt>Register</dt>
+    <dd>After filling out the registration information, you will be sent an email with a link to follow. Click on the link in the email and it will take you to the login page.</dd>
+    <dt>Add players</dt>
+    <dd>Click on the Players link to add player's names and emails.<dd>
+    <dt>Add games</dt>
+    <dd>Click on the Games link to add games.</dd>
+  </dl>
+  <h3>New Features</h3>
+  <ul>
+    <li>Premium members can designate reserve players. Reserve players are not sent reminder emails unless a regular player is not playing.</li>
+    <li>Players are sent update emails when a game is changed</li>
+    <li>Team captain can send messages to all players</li>
+    <li>Reminder emails have two links, playing and not playing, so players can indicate if they will be at the game.</li>
+    <li>The games list has a playing status link so you can see who has responded and if they are playing.</li>
+  </ul>
+</div>

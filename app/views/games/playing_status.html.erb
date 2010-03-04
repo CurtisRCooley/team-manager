@@ -1,8 +1,7 @@
 <%= stylesheet_link_tag 'playing_status' %>
 <div id='menu'>
   <ul>
-    <li><%= link_to "Schedule", :controller => 'schedule', :action => 'show', :id => Schedule.find(session[:schedule_id]) %></li>
-    <li><%= link_to "Games", :controller => 'games' %></li>
+    <li><%= link_to "Home", :controller => 'welcome' %></li>
   </ul>
 </div>
 <div id='body'>

@@ -47,7 +47,7 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.save
         flash[:notice] = 'Game was successfully created.'
-        format.html { redirect_to(@game) }
+        format.html { redirect_to(:home) }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.update_attributes(params[:game])
         flash[:notice] = 'Game was successfully updated.'
-        format.html { redirect_to(@game) }
+        format.html { redirect_to(:home) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,7 +80,7 @@ class GamesController < ApplicationController
     @game.destroy
 
     respond_to do |format|
-      format.html { redirect_to(games_url) }
+      format.html { redirect_to(:home) }
       format.xml  { head :ok }
     end
   end
