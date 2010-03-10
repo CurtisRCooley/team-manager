@@ -5,9 +5,7 @@ Feature: Schedule Feature
   
   Scenario: Schedule view
     Given a user is logged in as markEmark
-      And schedule the_schedule belongs to user markEmark
-      And game game1 belongs to schedule the_schedule
-      And I go to the home page
-    When I follow "the_schedule"
-    Then I should see "Games"
+      And user creates game game1
+    When I go to the home page
+    Then I should see "Your Schedule"
       And I should see "Game time"

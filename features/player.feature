@@ -6,10 +6,8 @@ Feature: Player Feature
   Scenario: Players view
     Given a user is logged in as markEmark
     And schedule the_schedule belongs to user markEmark
-    And player me@here.org belongs to schedule the_schedule
-    And I go to the home page
-    And I follow "the_schedule"
-    When I follow "Players" 
+    And player me@here.org belongs to user markEmark
+    When I go to the home page
     Then I should see "me@here.org"
 
   Scenario: Player view
@@ -17,7 +15,6 @@ Feature: Player Feature
     And schedule the_schedule belongs to user markEmark
     And player me@here.org belongs to schedule the_schedule
     And I go to the home page
-    And I follow "the_schedule"
     And I follow "Players" 
     When I follow "Show"
     Then I should see "Email: me@here.org"
@@ -28,7 +25,6 @@ Feature: Player Feature
     And schedule the_schedule belongs to user markEmark
     And player me@here.org belongs to schedule the_schedule
     And I go to the home page
-    And I follow "the_schedule"
     And I follow "Players" 
     When I follow "Edit"
     Then I should see "Player Management"
@@ -40,7 +36,6 @@ Feature: Player Feature
 	    And schedule the_schedule belongs to user markEmark
 	    And player me@here.org belongs to schedule the_schedule
 	    And I go to the home page
-	    And I follow "the_schedule"
 	    And I follow "Players" 
 	    And I follow "Edit"
             And I check "Reserve"

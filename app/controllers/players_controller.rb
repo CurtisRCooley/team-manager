@@ -55,7 +55,7 @@ class PlayersController < ApplicationController
     email_reserve
   end
 
-  def reminder
+  def self.reminder
     User.all.each { |user|
       user.schedules.each { |schedule|
         upcoming_games(schedule).each { |game|
@@ -76,7 +76,7 @@ class PlayersController < ApplicationController
   end
 
   private
-    def upcoming_games(schedule)
+    def self.upcoming_games(schedule)
       Game.find(:all,
         :conditions => ["schedule_id = ? AND game_time <= ? AND game_time > ?",
 	  schedule.id, schedule.notification_days.days.from_now,
