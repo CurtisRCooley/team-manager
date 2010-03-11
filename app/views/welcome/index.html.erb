@@ -3,6 +3,7 @@
     <li><%= link_to 'About', :action => 'about' %></li>
     <li><%= link_to 'Features', :action => 'features' %></li>
     <% if session[:user_id] %>
+      <li><%= link_to 'Email Team', :controller => 'players', :action => 'email' %></li>
       <li><%= link_to 'Logout', :controller => 'admin', :action => 'logout' %></li>
     <% else %>
       <li><%= link_to 'Login', :controller => 'admin', :action => 'login' %>
