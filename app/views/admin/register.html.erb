@@ -1,3 +1,7 @@
+<div id='menu'>
+  <%= link_to 'Back', :controller => 'welcome' %>
+</div>
+<div id="body">
 <h1>New User Registration</h1>
 <p>Fill in the form and submit the information. You will be sent an email with a link to verify your registration. Once you hit submit, check your email for the registration link</p>
 <% form_for(@user, :url => {:controller => 'admin', :action => 'register'}) do |f| %>
@@ -26,4 +30,4 @@
 <dl>
   <dt>Why do you want my email?</dt>
   <dd>You will be sent a link to click on to verify you are a person and not a spam bot. I will never ever ever give or sell your's or you player's information. Ever. I may occasionally email you when I've added features you might be interested in and I will soon allow you to opt out of those. I am planning to add an opt in option to registration soon.</dd>
-<%= link_to 'Back', :controller => 'welcome' %>
+</div>

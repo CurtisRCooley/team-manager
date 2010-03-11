@@ -117,3 +117,26 @@ a:hover { color: #fff; background-color:#000; }
   border-top: 1px solid black;
   text-align: center;
 }
+
+ul.features {
+  list-style-type: none;
+  padding-top: 16px;
+  margin: 0px;
+}
+
+li.features {
+  background-image: url(/images/check_mark.png);
+  background-repeat: no-repeat;
+  background-position: 0px 0px; 
+  padding-left: 24px; 
+}
+
+img.features {
+  padding-left: 50px;
+  padding-top: 25px;
+}
+
+a.features:hover {
+  background-color: white;
+}
+
