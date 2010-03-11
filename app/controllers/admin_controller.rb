@@ -11,6 +11,8 @@ class AdminController < ApplicationController
       logger.info params[:user_password]
       logger.info params[:user_password_confirmation]
       @user.attributes = params[:user]
+      UserMailer.deliver_welcome_email(@user)
+      UserMailer.deliver_new_user_email(@user)
       flash[:notice] = "An email has been sent to #{@user.email} with a link to complete your registration"
       redirect_to :home and return if @user.save
     end

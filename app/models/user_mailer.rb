@@ -1,11 +1,18 @@
 class UserMailer < ActionMailer::Base
   def welcome_email(user)
     recipients user.email 
-    from "Curtis Cooley <curtis@thecooleys.org>"  
+    from "curtis@thecooleys.org"  
     subject "Welcome to Team Captain"  
     sent_on Time.now 
     body :user => user, :url => "http://www.recteamcaptain.com/admin/validate/#{user.registration_key}/#{user.id}"
   end 
+
+  def new_user_email(user)
+    recipients "curtis@thecooleys.org"
+    from "curtis@thecooleys.org"
+    subject "New Rec Team Captain User"
+    body "New user for Rec Team Captain #{user.email}"
+  end
 
   def reminder_email(player, game, user, schedule)
     recipients player.email
