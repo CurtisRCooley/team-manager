@@ -11,10 +11,13 @@ class AdminController < ApplicationController
       logger.info params[:user_password]
       logger.info params[:user_password_confirmation]
       @user.attributes = params[:user]
-      UserMailer.deliver_welcome_email(@user)
-      UserMailer.deliver_new_user_email(@user)
       flash[:notice] = "An email has been sent to #{@user.email} with a link to complete your registration"
-      redirect_to :home and return if @user.save
+      if @user.save
+        UserMailer.deliver_welcome_email(@user)
+        UserMailer.deliver_new_user_email(@user)
+        redirect_to :home
+        return
+      end
     end
   end
 
@@ -53,7 +56,7 @@ class AdminController < ApplicationController
       redirect_to :action => 'login'
     else
       flash[:notice] = "Invalid registration key"
-      redirect_to :controller => 'users', :action => 'new'
+      redirect_to :action => 'register'
     end
   end
 

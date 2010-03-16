@@ -24,7 +24,7 @@ class PlayersControllerTest < ActionController::TestCase
     end
 
     assert_equal schedules(:user_two_schedule).id, assigns(:player).schedule_id
-    assert_redirected_to :action => 'show', :id => assigns(:player)
+    assert_redirected_to :home
   end
 
   test "should show player" do
@@ -47,12 +47,12 @@ class PlayersControllerTest < ActionController::TestCase
       delete :destroy, :id => players(:player_one).to_param
     end
 
-    assert_redirected_to :action => 'index'
+    assert_redirected_to :home
   end
 
   test "should remind players" do
     session.clear
-    get :reminder
+    PlayersController.reminder
     assert_emails 3
     to_list = ActionMailer::Base.deliveries.collect {|delivery| delivery.to.to_s}
     assert to_list.include?("player@one.com"), "Expected to list to contain 'player@one.com'"
@@ -66,7 +66,7 @@ class PlayersControllerTest < ActionController::TestCase
     assert_emails 1
     assert_equal 1, ActionMailer::Base.deliveries.length
     assert_equal %w[in@cti.ve player@one.com player@two.com reserve@me.com].sort, ActionMailer::Base.deliveries[0].to.sort
-    assert_equal "subject", ActionMailer::Base.deliveries[0].subject
+    assert_equal "Rec Team Captain: subject", ActionMailer::Base.deliveries[0].subject
     assert_equal users(:two).email, ActionMailer::Base.deliveries[0].from[0]
     assert_equal "Message sent", flash[:notice]
   end

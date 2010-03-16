@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
     from "curtis@thecooleys.org"  
     subject "Welcome to Team Captain"  
     sent_on Time.now 
-    body :user => user, :url => "http://www.recteamcaptain.com/admin/validate/#{user.registration_key}/#{user.id}"
+    body :user => user, :url => "http://www.recteamcaptain.com/admin/validate/"
   end 
 
   def new_user_email(user)

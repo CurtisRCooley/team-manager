@@ -6,7 +6,7 @@
   <body>  
     <h1>Welcome to Team Caption <%=h @user.email %></h1>
     <p>  You have successfully signed up for Team Captain, and your username is: <%=h @user.email %>.</p>
-    <p>  To login to the site, just follow this link: <%=h @url %> </p>  
+    <p>  To login to the site, just follow this link: <%= @url %><%= @user.registration_key%>/<%= @user.id %></p>  
       <p>Thanks for joining and have a great day!</p>  
   </body> 
 </html>
