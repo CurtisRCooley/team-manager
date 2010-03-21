@@ -4,6 +4,7 @@ class GamesControllerTest < ActionController::TestCase
   def setup
     session[:user_id] = users(:one).id
     session[:schedule_id] = schedules(:user_one_schedule).id
+    ActionMailer::Base.deliveries = []
   end
 
   test "should get index" do
@@ -25,7 +26,7 @@ class GamesControllerTest < ActionController::TestCase
     end
 
     assert_equal session[:schedule_id], assigns(:game).schedule_id
-    assert_redirected_to game_path(assigns(:game))
+    assert_redirected_to :home
   end
 
   test "should show game" do
@@ -40,7 +41,7 @@ class GamesControllerTest < ActionController::TestCase
 
   test "should update game" do
     put :update, :id => games(:game1).to_param, :game => { :game_time => Date.today}
-    assert_redirected_to game_path(assigns(:game))
+    assert_redirected_to :home
   end
 
   test "should email players on game change" do
@@ -53,7 +54,7 @@ class GamesControllerTest < ActionController::TestCase
       delete :destroy, :id => games(:game1).to_param
     end
 
-    assert_redirected_to games_path
+    assert_redirected_to :home
   end
 
 #  test "should show playing status for game" do

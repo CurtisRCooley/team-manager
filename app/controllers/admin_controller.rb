@@ -17,6 +17,8 @@ class AdminController < ApplicationController
         UserMailer.deliver_new_user_email(@user)
         redirect_to :home
         return
+      else
+        logger.error "Error saving user #{params[:user_email]}"
       end
     end
   end

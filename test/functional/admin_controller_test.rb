@@ -21,4 +21,11 @@ class AdminControllerTest < ActionController::TestCase
     assert_equal 0, schedules[0].minimum_players
     assert_equal "#{user.email}'s Team", schedules[0].name
   end
+
+  test "registration email has correct url" do
+    post :register, :user => {:email => 'm@n.com', :password => 'secret', :password_confirmation => 'secret'}
+    user = User.find_by_email('m@n.com')
+    assert_emails 2
+    assert ActionMailer::Base.deliveries[0].body.include?("http://www.recteamcaptain.com/admin/validate/#{user.registration_key}/#{user.id}")
+  end
 end
