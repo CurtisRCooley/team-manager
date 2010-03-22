@@ -131,9 +131,9 @@ li.features {
   padding-left: 24px; 
 }
 
-img.features {
-  padding-left: 50px;
-  padding-top: 25px;
+button.features {
+  margin-left: 50px;
+  margin-top: 25px;
 }
 
 a.features:hover {
