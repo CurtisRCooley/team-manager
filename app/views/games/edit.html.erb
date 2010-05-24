@@ -1,3 +1,10 @@
+<div id='menu'>
+  <ul>
+    <li><%= link_to 'Show', @game %><br></li>
+    <li><%= link_to 'Back', :home %></li>
+  </ul>
+</div>
+<div id='body'>
 <h1>Editing game</h1>
 
 <% form_for(@game) do |f| %>
@@ -23,6 +30,4 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @game %> |
-<%= link_to 'Back', :home %>
+</div>

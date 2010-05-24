@@ -2,6 +2,7 @@ include Email
 
 class PlayersController < ApplicationController
   skip_before_filter [ :check_authorization, :playing, :not_playing, :reminder ]
+
   # GET /players
   # GET /players.xml
   def index
@@ -26,7 +27,15 @@ class PlayersController < ApplicationController
 
   # GET /players/1/edit
   def edit
-    @player = Player.find_by_id(params[:id]) || Player.new
+    @player = Player.find_by_id(params[:id])
+    if @player == nil 
+      if not_over_limit(User.find(session[:user_id]), Schedule.find(session[:schedule_id]))
+        @player = Player.create
+      elsif
+        redirect_to :action => 'index'
+        return
+      end
+    end
     @player.schedule = Schedule.find(session[:schedule_id])
     if request.post? || request.put?
       @player.attributes = params[:player]
@@ -76,6 +85,10 @@ class PlayersController < ApplicationController
   end
 
   private
+    def not_over_limit(user, schedule)
+      user.end_date != nil && user.end_date > Date.today || schedule.players.size < 20
+    end
+
     def self.upcoming_games(schedule)
       Game.find(:all,
         :conditions => ["schedule_id = ? AND game_time <= ? AND game_time > ?",

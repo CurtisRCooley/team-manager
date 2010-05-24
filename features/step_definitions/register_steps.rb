@@ -15,13 +15,10 @@ When /^I register$/ do
   "Then user #{@user} should exist"
 end  
 
-Then /^I should get an email$/ do
-  assert_equal 1, ActionMailer::Base.deliveries.size
-end
-
-Then /^the email should contain a validation url$/ do
-end
-
 Then /^user (.+) should exist$/ do |user|
   assert_not_nil User.find_by_email(user)
+end
+
+Then /^registration key should not be nil$/ do
+  assert_not_nil User.find_by_email(@user).registration_key
 end

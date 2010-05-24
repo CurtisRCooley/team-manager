@@ -13,6 +13,7 @@ class AdminController < ApplicationController
       @user.attributes = params[:user]
       flash[:notice] = "An email has been sent to #{@user.email} with a link to complete your registration"
       if @user.save
+	logger.error "@user.save works"
         UserMailer.deliver_welcome_email(@user)
         UserMailer.deliver_new_user_email(@user)
         redirect_to :home

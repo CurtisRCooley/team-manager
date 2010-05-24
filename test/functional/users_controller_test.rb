@@ -22,6 +22,7 @@ class UsersControllerTest < ActionController::TestCase
       post :edit, :user => {:email => 'the_email@here.ca', :password => 'secret', :password_confirmation => 'secret' }
     end
 
+    assert 1.day.ago >= assigns(:user).end_date
     assert_redirected_to :action => 'index'
   end
 

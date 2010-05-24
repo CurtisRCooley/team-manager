@@ -23,6 +23,7 @@ one:
 two:
   email: two@bar.org
   hashed_password: MyString
+  end_date: <%= 1.day.ago %>
 
 new:
   email: new@org.com

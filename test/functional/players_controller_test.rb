@@ -27,6 +27,16 @@ class PlayersControllerTest < ActionController::TestCase
     assert_redirected_to :home
   end
 
+  test "non premium user can only create 20 players" do
+    # already has 4 players
+    16.times do
+      post :edit, :player => {}
+    end
+    assert_difference('Player.count', 0) do
+      post :edit, :player => {}
+    end
+  end
+
   test "should show player" do
     get :show, :id => players(:player_one).to_param
     assert_response :success

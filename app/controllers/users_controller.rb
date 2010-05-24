@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   
   def edit
-    @user = User.find_by_id(params[:id]) || User.new()
+    @user = User.find_by_id(params[:id])
+    if @user == nil
+      @user = User.new
+      @user.end_date = 1.day.ago
+    end
     if request.post?
       @user.attributes = params[:user]
       redirect_to :action => 'index' and return if @user.save
